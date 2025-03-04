@@ -31,9 +31,7 @@ Datasett:
 ![alt text](image-6.png)
 
 ### Video:
-
-<video controls src="2025-03-04 22-33-33.mp4" title="Prosjekt"></video>
-
+[Link til video](https://github.com/CataDev0/IS218-Geografisk-IT-utvikling/raw/refs/heads/main/2025-03-04%2022-33-33.mp4)
 <!-- ![alt text](image.png)
 ![alt text](image-1.png)
 ![alt text](image-2.png) -->
