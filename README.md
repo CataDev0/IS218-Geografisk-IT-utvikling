@@ -1,17 +1,32 @@
 # IS218-Geografisk-IT-utvikling
 
-Map: Leaflet.js
+Problemstilling: Skal du på gåtur, skitur eller sykkeltur i et flomutsatt eller snøskredsutsatt område? 
 
-Database: Supabase
+Implementering: 
+    - Vi henter raster data fra kartverket, som legges oppå OpenStreetMap, og legger inn/henter ut geoJSON data fra supabase basert på datasett fra GeoNorge. 
+
+Verktøy: 
+- Leaflet.js
+- Supabase
+- TypeScript, HTML, GeoJSON
+- bun.sh
 
 Datasett:
-- Turrutebase (GeoNorge, Kartverket) (WMS)
-- Flomsoner (GeoNorge, Norges vassdrags- og energidirektorat) (GeoJSON)
-- Aktsomhetskart for snøskred (GeoNorge, Norges vassdrags- og energidirektorat) (GeoJSON)
+- OpenStreetMap
+- Turrutebasen
+    -  (GeoNorge, Kartverket) (WMS)
+- Flomsoner 
+    - (GeoNorge, Norges vassdrags- og energidirektorat) (GeoJSON)
+- Aktsomhetskart for snøskred 
+    - (GeoNorge, Norges vassdrags- og energidirektorat) (GeoJSON)
 
 ![alt text](image.png)
 ![alt text](image-1.png)
 ![alt text](image-2.png)
+
+Env variables
+- VITE_supabaseUrl
+- VITE_supabaseKey
 
 # proto-gis
 

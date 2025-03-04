@@ -1,11 +1,13 @@
-import L from 'leaflet';
+import * as L from 'leaflet';
 import { createClient, SupabaseClient } from '@supabase/supabase-js';
+import "leaflet/dist/leaflet.css";
 
 export class GeoMap {
     private supabaseUrl?: string;
     private supabaseKey?: string;
     protected supabase: SupabaseClient<any, "public", any>;
     private map: L.Map;
+    private layerControl?: L.Control.Layers;
 
     constructor() {
 
@@ -35,7 +37,7 @@ export class GeoMap {
             ])
         })()
             .then(([fotrute, skiloype, sykkel]) => {
-                L.control.layers({}, {
+                this.layerControl = L.control.layers({}, {
                     "Fotrute": fotrute,
                     "Skiløype": skiloype,
                     "Sykkel": sykkel
@@ -102,16 +104,19 @@ export class GeoMap {
         data.forEach((geoData: { geojson: any, name: string, color: `#${string}` }) => {
             // Check if data is valid GeoJSON
             if (geoData.geojson && geoData.geojson.type === 'FeatureCollection') {
-                L.geoJSON(geoData.geojson, {
+                const layer = L.geoJSON(geoData.geojson, {
                     style: () => {
                         return {
-                            color: geoData.color,  
+                            color: geoData.color,
                             weight: 5,
                             opacity: 0.75,
                             fillOpacity: 0.3,
                         };
                     }
                 }).addTo(this.map);
+
+                this.layerControl?.addOverlay(layer, geoData.name[0].toUpperCase() + geoData.name.slice(1))
+
             } else {
                 console.error('Invalid GeoJSON data for', geoData.name);
             }
