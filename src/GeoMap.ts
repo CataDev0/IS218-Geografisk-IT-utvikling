@@ -38,9 +38,9 @@ export class GeoMap {
         })()
             .then(([fotrute, skiloype, sykkel]) => {
                 this.layerControl = L.control.layers({}, {
-                    "Fotrute": fotrute,
-                    "Skiløype": skiloype,
-                    "Sykkel": sykkel
+                    "<span style='color: #ff7f7f'>Fotrute</span>": fotrute,
+                    "<span style='color: #1450a4'>Skiløype</span>": skiloype,
+                    "<span style='color: black'>Sykkel</span>": sykkel
                 }).addTo(this.map);
             });
     }
@@ -53,7 +53,6 @@ export class GeoMap {
             attribution: '&copy; Kartverket'
         }).addTo(this.map);
     }
-
     // Load Trails from Supabase
     async loadTrails() {
         const { data, error } = await this.supabase
@@ -112,10 +111,13 @@ export class GeoMap {
                             opacity: 0.75,
                             fillOpacity: 0.3,
                         };
-                    }
+                    },
+                    attribution: "&copy; Norges vassdrags- og energidirektorat"
                 }).addTo(this.map);
 
-                this.layerControl?.addOverlay(layer, geoData.name[0].toUpperCase() + geoData.name.slice(1))
+                if (geoData.name === "Snoskred") geoData.name = "Snøskred";
+
+                this.layerControl?.addOverlay(layer, `<span style='color: ${geoData.color}'>${geoData.name[0].toUpperCase() + geoData.name.slice(1)}</span>`)
 
             } else {
                 console.error('Invalid GeoJSON data for', geoData.name);
