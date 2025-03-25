@@ -31,10 +31,7 @@ Datasett:
 ![alt text](image-6.png)
 
 ### Video:
-[Link til video](https://github.com/CataDev0/IS218-Geografisk-IT-utvikling/raw/refs/heads/main/2025-03-04%2022-33-33.mp4)
-<!-- ![alt text](image.png)
-![alt text](image-1.png)
-![alt text](image-2.png) -->
+![GIS video](output.webp)
 
 Env variables
 - VITE_supabaseUrl
